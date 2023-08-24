@@ -11,6 +11,21 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <ul>
+          <% if user_signed_in? %>
+            <% if current_user.role == "admin" %>
+
+            <% elsif current_user.role == "public" %>
+
+            <% else %>
+              <li><%= link_to "About", about_path %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
