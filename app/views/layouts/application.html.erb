@@ -14,15 +14,27 @@
     <header>
       <nav>
         <ul>
-          <% if user_signed_in? %>
+          <% if customer_signed_in? %>
             <% if current_user.role == "admin" %>
-
+              <li>商品一覧</li>
+              <li>会員一覧</li>
+              <li>注文履歴一覧</li>
+              <li><%= link_to "ログアウト", destroy_customer_session_path %></li>
             <% elsif current_user.role == "public" %>
-
+              <li>マイページ</li>
+              <li>商品一覧</li>
+              <li>カート</li>
+              <li><%= link_to "ログアウト", destroy_customer_session_path %></li>
             <% else %>
               <li><%= link_to "About", about_path %></li>
-              <li><%= link_to "新規登録", new_user_registration_path %></li>
-              <li><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to "新規登録", new_customer_registration_path %></li>
+              <li><%= link_to "ログイン", new_customer_session_path %></li>
+            <% end%>
+            <% else %>
+              <li><%= link_to "About", about_path %></li>
+              <li><%= link_to "新規登録", new_customer_registration_path %></li>
+              <li><%= link_to "ログイン", new_customer_session_path %></li>
+            <% end %>
         </ul>
       </nav>
     </header>
