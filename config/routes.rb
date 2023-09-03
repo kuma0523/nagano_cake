@@ -41,11 +41,21 @@ Rails.application.routes.draw do
   #   get 'homes/about'
   # end
 
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+
   root to: 'public/homes#top'
 
-    get "homes/about" => "homes#about", as: "about"
+    get "homes/about" => "public/homes#about", as: "about"
 
     resources :items, only: [:index, :show]
+
 
     resources :customers, only: [:show, :edit, :update] do
       member do
@@ -53,6 +63,10 @@ Rails.application.routes.draw do
         delete 'withdraw'
       end
     end
+
+    get '/cusotomer' => 'customer#show'
+    get '/customers/information/edit' => 'customer#edit'
+
 
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do
@@ -62,9 +76,9 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
 
-    namespace :public do
-      resources :customers
-    end
+    # namespace :public do
+    #   resources :customers
+    # end
 
 
   # 管理者コントローラーとアクション
@@ -87,14 +101,7 @@ Rails.application.routes.draw do
   # end
 
 
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
 
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
 
 end
 
