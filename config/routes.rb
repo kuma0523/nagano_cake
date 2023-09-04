@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  # namespace :admin do
+
+  # namespace :public do
+  #   get 'customer/show'
+  #   get 'customer/edit'
+  #   get 'customer/unsubscribe'
+  # end
+  # # namespace :admin do
   #   get 'orders/show'
   # end
   # namespace :admin do
@@ -27,11 +33,7 @@ Rails.application.routes.draw do
   # namespace :public do
   #   get 'cart_items/index'
   # end
-  # namespace :public do
-  #   get 'customers/show'
-  #   get 'customers/edit'
-  #   get 'customers/unsubscribe'
-  # end
+
   # namespace :public do
   #   get 'items/index'
   #   get 'items/show'
@@ -57,7 +59,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
 
 
-    resources :customers, only: [:show, :edit, :update] do
+    resources :customer, only: [:show, :edit, :update] do
       member do
         get 'unsubscribe'
         delete 'withdraw'
