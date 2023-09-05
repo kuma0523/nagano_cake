@@ -2,6 +2,17 @@ Rails.application.routes.draw do
 
 
   # namespace :public do
+  #   get 'customers/show'
+  #   get 'customers/edit'
+  #   get 'customers/unsubscribe'
+  # end
+
+  # namespace :admin do
+  #   get 'customers/index'
+  #   get 'customers/show'
+  #   get 'customers/edit'
+  # end
+  # namespace :public do
   #   get 'customer/show'
   #   get 'customer/edit'
   #   get 'customer/unsubscribe'
@@ -9,11 +20,7 @@ Rails.application.routes.draw do
   # # namespace :admin do
   #   get 'orders/show'
   # end
-  # namespace :admin do
-  #   get 'customers/index'
-  #   get 'customers/show'
-  #   get 'customers/edit'
-  # end
+
   # namespace :admin do
   #   get 'items/index'
   #   get 'items/new'
@@ -43,7 +50,9 @@ Rails.application.routes.draw do
   #   get 'homes/about'
   # end
 
-  devise_for :customers, skip: [:passwords], controllers: {
+    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+
+    devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
@@ -52,21 +61,26 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  root to: 'public/homes#top'
 
-    get "homes/about" => "public/homes#about", as: "about"
+
+
+root to: 'public/homes#top'
+
+get "homes/about" => "public/homes#about", as: "about"
+
+
 
     resources :items, only: [:index, :show]
 
 
-    resources :customer, only: [:show, :edit, :update] do
+    resource :customers, only: [:show, :edit, :update] do
       member do
         get 'unsubscribe'
         delete 'withdraw'
       end
     end
 
-    get '/cusotomer' => 'customer#show'
+
     get '/customers/information/edit' => 'customer#edit'
 
 
@@ -76,11 +90,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
 
-    # namespace :public do
-    #   resources :customers
-    # end
+
+
+
 
 
   # 管理者コントローラーとアクション
