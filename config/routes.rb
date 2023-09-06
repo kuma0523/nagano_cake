@@ -62,11 +62,13 @@ Rails.application.routes.draw do
   }
 
 
+  scope module: :public do
 
 
-root to: 'public/homes#top'
 
-get "homes/about" => "public/homes#about", as: "about"
+root to: 'homes#top'
+
+get "homes/about" => "homes#about", as: "about"
 
 
 
@@ -90,7 +92,7 @@ get "homes/about" => "public/homes#about", as: "about"
       end
     end
 
-
+end
 
 
 
@@ -111,9 +113,7 @@ get "homes/about" => "public/homes#about", as: "about"
   # ルートパス
 
 
-  # scope module: :public do
-  #   resources :items
-  # end
+
 
 
 
