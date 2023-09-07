@@ -12,11 +12,7 @@ Rails.application.routes.draw do
   #   get 'customers/show'
   #   get 'customers/edit'
   # end
-  # namespace :public do
-  #   get 'customer/show'
-  #   get 'customer/edit'
-  #   get 'customer/unsubscribe'
-  # end
+
   # # namespace :admin do
   #   get 'orders/show'
   # end
@@ -50,7 +46,7 @@ Rails.application.routes.draw do
   #   get 'homes/about'
   # end
 
-    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+
 
     devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -75,22 +71,21 @@ get "homes/about" => "homes#about", as: "about"
     resources :items, only: [:index, :show]
 
 
-    resource :customers, only: [:show, :edit, :update] do
+    resource :customers, only: [:show, :update] do
       member do
+        get 'information/edit' => 'customers#edit'
         get 'unsubscribe'
         delete 'withdraw'
       end
     end
-
-
-    get '/customers/information/edit' => 'customer#edit'
-
 
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do
         delete 'destroy_all'
       end
     end
+
+    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
 
 end
 
@@ -109,14 +104,6 @@ end
 
     resources :orders, only: [:show]
   end
-
-  # ルートパス
-
-
-
-
-
-
 
 end
 

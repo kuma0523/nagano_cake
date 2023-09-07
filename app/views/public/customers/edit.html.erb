@@ -1,2 +1,48 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<% if @customer.errors.any? %>
+
+  <%= @customer.errors.count %>error prohibited this obj from being saved:
+
+  <ul>
+
+    <% @customer.errors.full_messages.each do |message| %>
+
+      <li><%= message %></li>
+
+    <% end %>
+
+  </ul>
+
+<% end %>
+
+
+<h3>会員情報編集</h3>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <td>氏名</td>
+        <td>カナ</td>
+        <td>郵便番号</td>
+        <td>住所</td>
+        <td>電話番号</td>
+        <td>メールアドレス</td>
+      </tr>
+    </thead>
+      <tr>
+        <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
+          <td><%= f.text_field :first_name %>　<%= f.text_field :last_name %></td>
+          <td><%= f.text_field :first_name_kana %>　<%= f.text_field :last_name_kana %></td>
+          <td><%= f.text_field :postal_code %></td>
+          <td><%= f.text_field :address %></td>
+          <td><%= f.text_field :telephone_number %></td>
+          <td><%= f.text_field :email %></td>
+          <td><%= f.submit "編集内容を保存" %></td>
+        <% end %>
+        <td><%= link_to "退会する", unsubscribe_customers_path %></td>
+      </tr>
+    <tbody>
+
+    </tbody>
+  </table>
+</div>
