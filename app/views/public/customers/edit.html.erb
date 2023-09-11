@@ -30,7 +30,7 @@
       </tr>
     </thead>
       <tr>
-        <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
+        <%= form_with model: @customer, url: customers_path(@customer), method: :patch do |f| %>
           <td><%= f.text_field :first_name %>　<%= f.text_field :last_name %></td>
           <td><%= f.text_field :first_name_kana %>　<%= f.text_field :last_name_kana %></td>
           <td><%= f.text_field :postal_code %></td>

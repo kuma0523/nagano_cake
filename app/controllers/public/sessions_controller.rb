@@ -18,7 +18,32 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+
+
+
+  protected
+
+  def customer_state
+
+     @customer = Customer.find_by(email: params[:customer][:email])
+
+     return if !@customer
+
+    if @customer.valid_password?(params[:customer][:password])
+
+      if @customer.is_deleted
+
+        redirect_to new_customer_registration_path
+
+      else
+        redirect_to information_edit_customers_path
+      end
+
+    end
+
+  end
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

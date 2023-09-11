@@ -1,2 +1,25 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h3>商品新規登録</h3>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>商品画像</th>
+        <th>商品名</th>
+        <th>商品説明</th>
+        <th>税抜価格</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <%= form_with model: @item, url: new_admin_item_path, method: :patch do |f| %>
+          <tb></tb>
+          <tb><%= f.text_field :name %></tb>
+          <tb><%= f.text_field :introduction %></tb>
+          <tb><%- f.text_field :price %>円</tb>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
