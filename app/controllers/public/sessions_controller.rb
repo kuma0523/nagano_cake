@@ -36,7 +36,7 @@ class Public::SessionsController < Devise::SessionsController
         redirect_to new_customer_registration_path
 
       else
-        redirect_to information_edit_customers_path
+        redirect_to withdraw_customers_path
       end
 
     end
