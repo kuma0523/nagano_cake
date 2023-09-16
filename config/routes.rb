@@ -71,7 +71,7 @@ get "homes/about" => "homes#about", as: "about"
     resources :items, only: [:index, :show]
 
 
-    resource :customers, only: [:show,] do
+    resource :customers, only: [:show] do
       member do
         get 'information/edit' => 'customers#edit'
         patch 'information' => 'customers#update'

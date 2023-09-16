@@ -1,9 +1,6 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customer = Customer.new
-    @customers = current_customer
-
-
+    @customer = current_customer
   end
 
   def edit
@@ -12,10 +9,11 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
-
-    @customer.update(customer_params)
+    if @customer.update(customer_params)
       redirect_to customers_path
-
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
