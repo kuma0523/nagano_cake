@@ -5,8 +5,9 @@
   退会する場合は、「退会する」をクリックしてください。
 </p>
 
-<p><%= link_to "退会しない", new_customer_registration_path %></p>
+<div><%= link_to "退会しない", customers_path %></div>
 
-<p><%= form_with  url: withdraw_customers_path, method: :patch do |f| %>
-    
-</p>
+<div><%= form_with model: @customer, url: withdraw_customers_path, method: :patch do |f| %>
+      <%= f.submit "退会する" %>
+  <% end %>
+</div>

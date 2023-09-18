@@ -18,7 +18,9 @@
 <h3>会員情報編集</h3>
 
 <div>
+  <%= form_with model: @customer, url: information_customers_path, method: :patch do |f| %>
   <table>
+
     <thead>
       <tr>
         <td>氏名</td>
@@ -29,20 +31,24 @@
         <td>メールアドレス</td>
       </tr>
     </thead>
-      <tr>
-        <%= form_with model: @customer, url: information_customers_path, method: :patch do |f| %>
-          <td><%= f.text_field :first_name %>　<%= f.text_field :last_name %></td>
-          <td><%= f.text_field :first_name_kana %>　<%= f.text_field :last_name_kana %></td>
-          <td><%= f.text_field :postal_code %></td>
-          <td><%= f.text_field :address %></td>
-          <td><%= f.text_field :telephone_number %></td>
-          <td><%= f.text_field :email %></td>
-          <td><%= f.submit "編集内容を保存" %></td>
-        <% end %>
-        <td><%= link_to "退会する", unsubscribe_customers_path %></td>
-      </tr>
-    <tbody>
 
+    <tbody>
+      <tr>
+        <td><%= f.text_field :first_name %>　<%= f.text_field :last_name %></td>
+        <td><%= f.text_field :first_name_kana %>　<%= f.text_field :last_name_kana %></td>
+        <td><%= f.text_field :postal_code %></td>
+        <td><%= f.text_field :address %></td>
+        <td><%= f.text_field :telephone_number %></td>
+        <td><%= f.text_field :email %></td>
+      </tr>
     </tbody>
+
   </table>
+
+  <div><%= f.submit "編集内容を保存" %></div>
+
+  <div><%= link_to "退会する", unsubscribe_customers_path %></div>
+
+  <% end %>
+
 </div>
