@@ -27,13 +27,16 @@ class Public::CustomersController < ApplicationController
     if @customer.valid_password?(params[:customer][:password])
 
       if @customer.is_deleted
-
         redirect_to new_customer_registration_path
-
-      else
-        redirect_to withdraw_customers_path
       end
+    end
   end
+
+
+
+def customer_state
+
+end
 
 
 private

@@ -1,2 +1,26 @@
 <h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+
+<div>
+  <%= form_with model: @item, url: edit_admin_item_path, method: :patch do |f| %>
+  <table>
+    <thead>
+      <tr>
+        <th>商品画像</th>
+        <th>商品名</th>
+        <th>商品説明</th>
+        <th>税抜価格</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td></td>
+        <td><%= f.text_field :name %></td>
+        <td><%= f.text_field :introduction %></td>
+        <td><%= f.text_field :price %>円</td>
+      </tr>
+    </tbody>
+  </table>
+  <div><%= f.submit '変更を保存' %></div>
+  <% end %>
+</div>
