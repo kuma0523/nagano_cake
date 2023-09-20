@@ -34,4 +34,11 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
+  
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :introduction, :price, :image)
+  end
+  
 end
