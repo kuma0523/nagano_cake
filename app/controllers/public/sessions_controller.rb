@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+  before_action :customer_state, only: [:create]
   # GET /resource/sign_in
   # def new
   #   super
@@ -17,6 +17,7 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+
 
 
 
@@ -36,7 +37,6 @@ class Public::SessionsController < Devise::SessionsController
         redirect_to new_customer_registration_path
 
       else
-        redirect_to withdraw_customers_path
       end
 
     end

@@ -14,7 +14,7 @@
 
     <tbody>
       <tr>
-        <td></td>
+        <td><%= f.file_field :image, accept: "image/*" %></td>
         <td><%= f.text_field :name %></td>
         <td><%= f.text_field :introduction %></td>
         <td><%= f.text_field :price %>円</td>

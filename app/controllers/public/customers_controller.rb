@@ -20,23 +20,11 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = Customer.find_by(email: params[:customer][:email])
-
-     return if !@customer
-
-    if @customer.valid_password?(params[:customer][:password])
-
-      if @customer.is_deleted
-        redirect_to new_customer_registration_path
-      end
-    end
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to new_customer_registration_path
   end
-
-
-
-def customer_state
-
-end
 
 
 private
