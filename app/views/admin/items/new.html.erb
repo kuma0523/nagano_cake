@@ -1,7 +1,7 @@
 <h3>商品新規登録</h3>
 
 <div>
-  <%= form_with model: @item, url: new_admin_item_path, method: :patch do |f| %>
+  <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
   <table>
     <thead>
       <tr>
@@ -21,6 +21,6 @@
       </tr>
     </tbody>
   </table>
-  <% end %>
   <div><%= f.submit '新規登録' %></div>
+  <% end %>
 </div>

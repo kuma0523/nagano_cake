@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(admin)
     admin_items_path
   end
 

@@ -1,2 +1,13 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div><%= image_tag @item.image %></div>
+
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <td><%= @item.name %></td>
+        <td><%= @item.introduction %></td>
+        <td><%= @item.price %>円</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

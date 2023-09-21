@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
-  def index
 
+  def index
     @items = Item.all
   end
 
@@ -9,6 +9,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
+    @item = Item.new(item_params)
     if @item.save
       # flash[:notice] = "You have created book successfully."
       redirect_to admin_item_path(@item)
@@ -34,11 +35,11 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
-  
+
   private
 
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :image)
   end
-  
+
 end
