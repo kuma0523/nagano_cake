@@ -1,2 +1,83 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<% if @customer.errors.any? %>
+
+  <%= @customer.errors.count %>error prohibited this obj from being saved:
+
+  <ul>
+
+    <% @customer.errors.full_messages.each do |message| %>
+
+      <li><%= message %></li>
+
+    <% end %>
+
+  </ul>
+
+<% end %>
+
+
+<h1><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h1>
+
+<div>
+  <%= form_with model: @customer, url: information_customers_path, method: :patch do |f| %>
+
+  <div>
+    <tr>
+      <td>会員ID</td>
+      <td><%= @customer.id %></td>
+    </tr>
+  </div>
+
+  <div>
+    <tr>
+      <td>氏名</td>
+      <td><%= f.text_field :first_name %>　<%= f.text_field :last_name %></td>
+    </tr>
+  </div>
+
+  <div>
+    <tr>
+      <td>カナ</td>
+      <td><%= f.text_field :first_name_kana %>　<%= f.text_field :last_name_kana %></td>
+    </tr>
+  </div>
+
+  <div>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= f.text_field :postal_code %></td>
+    </tr>
+  </div>
+
+  <div>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address %></td>
+    </tr>
+  </div>
+
+  <div>
+    <tr>
+      <td>電話番号</td>
+      <td><%= f.text_field :telephone_number %></td>
+    </tr>
+  </div>
+
+  <div>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= f.text_field :email %></td>
+    </tr>
+  </div>
+
+  <div>
+    <tr>
+      <td>会員ステータス</td>
+
+    </tr>
+  </div>
+
+  <div><%= f.submit "変更を保存" %></div>
+
+  <% end %>
+
+</div>
