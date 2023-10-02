@@ -19,7 +19,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
 
     if @cart_item.update(cart_item_params)
-      redirect_to cart_item_path
+      redirect_to cart_items_path
     else
       @cart_items = CartItem.all
       render :index
@@ -40,7 +40,7 @@ class Public::CartItemsController < ApplicationController
 
 def cart_item_state
 
-     @cart_iteme = Item.find_by(neme: params[:name])
+     @cart_item = Item.find_by(neme: params[:name])
 
      return if !@cart_item
 

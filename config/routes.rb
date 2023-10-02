@@ -62,9 +62,9 @@ Rails.application.routes.draw do
 
 
 
-root to: 'homes#top'
+    root to: 'homes#top'
 
-get "homes/about" => "homes#about", as: "about"
+    get "homes/about" => "homes#about", as: "about"
 
 
 
@@ -88,7 +88,7 @@ get "homes/about" => "homes#about", as: "about"
 
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
 
-end
+  end
 
 
 

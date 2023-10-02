@@ -32,7 +32,7 @@
           </td>
           <td><%= cart_item.subtotal%></td>
           <td><%# if @cart_item.customer == current_user %>
-                <%= link_to "削除する", cart_item_path(cart_item), method: :delete %>
+                <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %>
               <%# end %>
           </td>
         </tr>
