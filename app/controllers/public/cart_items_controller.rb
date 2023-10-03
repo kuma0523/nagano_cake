@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+
   def index
     @cart_items = CartItem.all
   end
@@ -16,7 +17,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = CartItem.new(cart_item_params)
+    @cart_item = CartItem.find(params[:id])
 
     if @cart_item.update(cart_item_params)
       redirect_to cart_items_path
@@ -38,19 +39,6 @@ class Public::CartItemsController < ApplicationController
   end
 
 
-def cart_item_state
-
-     @cart_item = Item.find_by(neme: params[:name])
-
-     return if !@cart_item
-
-    if @cart_item.is_deleted
-
-        redirect_to
-
-      else
-    end
-end
 
 private
 
